@@ -1,0 +1,170 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ragnarok - Adventures in Midgard</title>
+	<link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+    <div class="container">
+            <div id="left-panel">
+                <div id="stats"></div>
+            </div>
+            <div id="right-panel">
+                <div class="tab-container">
+                    <button class="tab-button active" onclick="openTab('adventure')">Adventure</button>
+                    <button class="tab-button" onclick="openTab('inventory')">Inventory</button>
+			<button class="tab-button" onclick="openTab('stats')">Stats</button>
+			<button class="tab-button" onclick="openTab('skills')">Skills</button>
+			<button class="tab-button" onclick="openTab('quests')">Quests</button>
+			<button class="tab-button" onclick="openTab('friends')">Friends</button>
+			<button class="tab-button" onclick="openTab('options')">Options</button>
+                </div>
+
+                <div id="adventure-content" class="tab-content">
+                    <div id="story"></div>
+                    <div id="options"></div>
+                </div>
+
+                <div id="inventory-content" class="tab-content hidden">
+    <div class="inventory-tab-buttons">
+        <button class="inventory-tab-button active" onclick="openInventoryTab('all')">All</button>
+        <button class="inventory-tab-button" onclick="openInventoryTab('consumable')">Consumable</button>
+        <button class="inventory-tab-button" onclick="openInventoryTab('equipment')">Equipment</button>
+        <button class="inventory-tab-button" onclick="openInventoryTab('misc')">Misc</button>
+        <button class="inventory-tab-button" onclick="openInventoryTab('keyItem')">Key Items</button>
+    </div>
+    <div id="inventory-all" class="inventory-tab" style="display: block;"></div>
+    <div id="inventory-consumable" class="inventory-tab" style="display: none;"></div>
+    <div id="inventory-equipment" class="inventory-tab" style="display: none;"></div>
+    <div id="inventory-misc" class="inventory-tab" style="display: none;"></div>
+    <div id="inventory-keyItem" class="inventory-tab" style="display: none;"></div>
+</div>
+	
+<div id="stats-content" class="tab-content">
+    <h2>Stats</h2>
+    <div id="detailedStats"></div>
+</div>
+
+<div id="skills-content" class="tab-content">
+    <h2>Skills</h2>
+    <div id="skills"></div>
+</div>
+
+<div id="friends-content" class="tab-content">
+    <h2>Friends</h2>
+    <div id="friends">placeholder for friends</div>
+</div>
+
+	            <div id="quests-content" class="tab-content hidden"> 
+        	        <div id="quests"></div>
+        	    </div>
+<div id="options-content" class="tab-content hidden">
+    <strong>Options:</strong><br><br>
+
+    Name: <input type="text" id="playerName" value=""><br><br>
+    Surname: <input type="text" id="playerSurname" value=""><br><br>
+
+    Pronouns:
+    <select id="playerPronouns">
+        <option value="n">Non-Binary (They/Them)</option>
+        <option value="f">Female (She/Her)</option>
+        <option value="m">Male (He/Him)</option>
+        <option value="o">Other</option>
+    </select><br><br>
+
+    <button onclick="setPlayerName()">Set</button><br><br>
+
+    <button onclick="saveGame()">Save Game</button>
+    <button onclick="loadGame()">Load Game</button><br><br>
+
+<button onclick="resetSave()">Reset Save</button><br>Warning: This resets all progress and is unrecoverable.<br>
+
+</div>
+            </div>
+    </div>
+
+    <script>
+
+        let playerInfo = {
+		job: "novice",
+		gender: "female",
+		hairStyle: "f_7",      // Default hair style
+		hairColor: "yellow",      // Default hair color
+		costume: "novice",      // Default costume
+		name: "Firstname",
+		surname: "Lastname", 
+		pronouns: "f", 
+		zenny: 0,
+		skills: {},
+		friends: [],
+        };
+
+        let playerStats = {
+            STR: 1,
+            AGI: 1,
+            VIT: 1,
+            INT: 1,
+            DEX: 1,
+            LUK: 1,
+		availableStatPoints: 1,
+		availableSkillPoints: 0,
+		baseEXP: 1,
+		baseEXPNext: 10,
+		baseLevel: 1,
+		jobEXP: 1,
+		jobEXPNext: 10,
+		baseJobLevel: 1,
+        };
+
+        let calculatedStats = {
+            maxHP: 1,
+            currentHP: 1,
+            maxMP: 1,
+            currentMP: 1,
+            ATK: 1,
+            MATK: 1,
+	    hit: 1,
+	    critRate: 1,
+	    critDamage: 1,
+	    ASPD: 1,
+	    DEF: 1,
+	    MDEF: 1,
+	    speed: 1,
+	    flee: 1,
+        };
+
+	let equipment = {
+	    HeadUp: "Leather Cap",
+	    HeadMid: "Nothing",
+	    HeadLow: "Nothing",
+	    MainHand: "Nothing",
+	    OffHand: "Nothing",
+	    Body: "Nothing",
+	    Robe: "Nothing",
+	    Shoes: "Nothing",
+	    Acc1: "Nothing",
+	    Acc2: "Nothing",
+	};
+
+        let inventory = {};
+
+	let quests = {};
+
+    </script>
+	<script defer src="scripts/avatar.js"></script>
+	<script defer src="story/quest.js"></script>
+        <script defer src="scripts/itemEffects.js"></script>
+        <script defer src="scripts/skills.js"></script>
+        <script defer src="scripts/equipmentStats.js"></script>
+	<script defer src="scripts/utils.js"></script>
+        <script defer src="scripts/ui.js"></script>
+        <script defer src="story/storyNodes.js"></script>
+        <script defer src="scripts/npcs.js"></script>
+	<script defer src="scripts/game.js"></script>
+
+</body>
+
+</html>
